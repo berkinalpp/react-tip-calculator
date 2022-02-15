@@ -3,12 +3,18 @@ import logo from "./images/logo.svg";
 import "./App.css";
 
 function App() {
-  const [bill, setBill] = useState(0);
-  const [tip, setTip] = useState(0);
-  const [people, setPeople] = useState(1);
+  const [bill, setBill] = useState("");
+  const [tip, setTip] = useState("");
+  const [people, setPeople] = useState("");
+  let customInput = document.querySelector(".customInput");
 
-  const tipAmount = parseFloat(bill * (tip / 100));
-  const total = parseFloat((bill + tipAmount) / people);
+  let tipAmount = parseFloat(bill * (tip / 100));
+  let total = parseFloat((bill + tipAmount) / people);
+
+  if (isNaN(bill) || people <= 0 || isNaN(tip) || isNaN(people)) {
+    tipAmount = 0;
+    total = 0;
+  }
 
   return (
     <div className="App">
@@ -20,24 +26,40 @@ function App() {
             type="number"
             className="input"
             placeholder="0"
+            value={bill}
             onChange={(e) => setBill(parseFloat(e.target.value))}
           />
           <br />
           <h4> Select tip %</h4>
           <div className="tipGroup">
-            <button className="tipBtn" onClick={() => setTip(5)}>
+            <button
+              className={`tipBtn ${tip === 5 ? "active" : ""}`}
+              onClick={() => (tip === 5 ? setTip(0) : setTip(5))}
+            >
               5 %
             </button>
-            <button className="tipBtn" onClick={() => setTip(10)}>
+            <button
+              className={`tipBtn ${tip === 10 ? "active" : ""}`}
+              onClick={() => (tip === 10 ? setTip(0) : setTip(10))}
+            >
               10 %
             </button>
-            <button className="tipBtn" onClick={() => setTip(15)}>
+            <button
+              className={`tipBtn ${tip === 15 ? "active" : ""}`}
+              onClick={() => (tip === 15 ? setTip(0) : setTip(15))}
+            >
               15 %
             </button>
-            <button className="tipBtn" onClick={() => setTip(25)}>
+            <button
+              className={`tipBtn ${tip === 25 ? "active" : ""}`}
+              onClick={() => (tip === 25 ? setTip(0) : setTip(25))}
+            >
               25 %
             </button>
-            <button className="tipBtn" onClick={() => setTip(50)}>
+            <button
+              className={`tipBtn ${tip === 50 ? "active" : ""}`}
+              onClick={() => (tip === 50 ? setTip(0) : setTip(50))}
+            >
               50 %
             </button>
             <input
@@ -53,6 +75,7 @@ function App() {
             type="number"
             className="input"
             placeholder="1"
+            value={people}
             onChange={(e) => setPeople(parseFloat(e.target.value))}
           />
           <br />
@@ -70,9 +93,10 @@ function App() {
             <button
               className="resetBtn"
               onClick={() => {
-                setBill(0);
-                setTip(0);
-                setPeople(1);
+                setBill("");
+                setTip("");
+                setPeople("");
+                customInput.value = "";
               }}
             >
               RESET

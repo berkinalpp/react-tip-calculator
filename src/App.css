@@ -45,8 +45,15 @@
   border: none;
   border-radius: 5px;
   font-size: 22px;
+  font-weight: bold;
   color: hsl(0, 0%, 100%);
   cursor: pointer;
+  transition: all 0.5s;
+}
+
+.active {
+  background-color: hsl(172, 67%, 45%);
+  color: hsl(183, 100%, 15%);
 }
 .customInput {
   width: 7.3rem;
@@ -116,19 +123,98 @@ input {
   font-weight: bold;
   color: hsl(189, 41%, 97%);
   cursor: pointer;
+  transition: all 0.5s;
+}
+.resetBtn:hover {
+  background-color: hsl(172, 67%, 45%);
+  color: hsl(183, 100%, 15%);
 }
 .title {
   color: hsl(0, 0%, 100%);
   font-size: 20px;
-  margin-top: 1.3rem;
+  margin-top: 1rem;
 }
 .result {
-  font-size: 50px;
+  font-size: 45px;
   color: hsl(172, 67%, 45%);
 }
 
-@media (max-width: 400px) {
+@media screen and (max-width: 1440px) {
   .content {
+    width: 90%;
+  }
+  .result {
+    font-size: 40px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .content {
+    width: 100%;
+  }
+  .left {
+    width: 90%;
+  }
+  .right {
+    padding: 4rem 0;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 879px) {
+  .tipGroup {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .App {
+    height: 100%;
+  }
+  .logo {
+    margin-top: 3rem;
+  }
+  .content {
+    width: 100%;
+    padding: 2rem 0;
     flex-wrap: wrap;
+  }
+  .right {
+    margin-left: 2.5rem;
+    width: 90%;
+  }
+  .left {
+    width: 100%;
+  }
+  .input {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 494px) {
+  .tipBtn {
+    width: 44%;
+  }
+  .customInput {
+    width: 44%;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .result {
+    font-size: 50px;
+    margin-top: 0.5rem;
+  }
+  .tipBtn {
+    width: 100%;
+  }
+  .customInput {
+    width: 100%;
+    letter-spacing: 0.3rem;
+  }
+  .amount {
+    flex-direction: column;
+  }
+  .total {
+    flex-direction: column;
   }
 }
